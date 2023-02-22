@@ -1,39 +1,48 @@
 # Initialize 5 players. Set scores.
-print(" ** Welcome to Beauty Contest!!! ** ")
+P1_Score = 0
+P2_Score = 0
+P3_Score = 0
+P4_Score = 0
+P5_Score = 0
 
-CPU1_Score = 10
-CPU2_Score = 10
-CPU3_Score = 10
-CPU4_Score = 10
-CPU5_Score = 10
+def playerOneLost(P1_score):
+    p1Score = P1_score + 1
+    return p1Score
 
-currentScores = [CPU1_Score, CPU2_Score, CPU3_Score, CPU4_Score, CPU5_Score]
+def playerTwoLost(P2_score):
+    p2Score = P2_score + 1
+    return p2Score
+
+def playerThreeLost(P3_score):
+    p3Score = P3_score + 1
+    return p3Score
+
+def playerFourLost(P4_score):
+    p4Score = P4_score + 1
+    return p4Score
+
+def playerFiveLost(P5_score):
+    p5Score = P5_score + 1
+    return p5Score
 
 
-CPU_1 = int(input("Player One, please enter a number from 1 to 100: "))
-CPU_2 = int(input("Player Two, please enter a number from 1 to 100: "))
-CPU_3 = int(input("Player Three, please enter a number from 1 to 100: "))
-CPU_4 = int(input("Player Four, please enter a number from 1 to 100: "))
-CPU_5 = int(input("Player Five, please enter a number from 1 to 100: "))
 
 
-print(CPU_1)
-print(CPU_2)
-print(CPU_3)
-print(CPU_4)
-print(CPU_5)
+def beginRound():
+    print(" ** Welcome to Beauty Contest!!! ** ")
+    CPU_1 = int(input("Player One, please enter a number from 1 to 100: "))
+    CPU_2 = int(input("Player Two, please enter a number from 1 to 100: "))
+    CPU_3 = int(input("Player Three, please enter a number from 1 to 100: "))
+    CPU_4 = int(input("Player Four, please enter a number from 1 to 100: "))
+    CPU_5 = int(input("Player Five, please enter a number from 1 to 100: "))
+    sum = (CPU_1 + CPU_2 + CPU_3 + CPU_4 + CPU_5)
+    avg = (sum) / 5
+    product_ans = (float)(avg) * 0.8
+    print("The product answer is: ", product_ans)
+    roundResults = [CPU_1, CPU_2, CPU_3, CPU_4, CPU_5, product_ans]
+    return roundResults
+    
 
-sum = (CPU_1 + CPU_2 + CPU_3 + CPU_4 + CPU_5)
-avg = (sum) / 5
-product_ans = (float)(avg) * 0.8
-print("The product answer is: ", product_ans)
-
-def showUpdatedScores():
-    print("Player 1 Score: ", CPU1_Score)
-    print("Player 2 Score: ", CPU2_Score)
-    print("Player 3 Score: ", CPU3_Score)
-    print("Player 4 Score: ", CPU4_Score)
-    print("Player 5 Score: ", CPU5_Score)
 
 
 def compareInputsToProduct(player1: int, player2: int, player3: int, player4: int, player5: int, productAnswer: int):
@@ -55,7 +64,10 @@ def compareInputsToProduct(player1: int, player2: int, player3: int, player4: in
 
 
 def determineWinner():
-    winner = compareInputsToProduct(CPU_1, CPU_2, CPU_3, CPU_4, CPU_5, product_ans)
+    listA = []
+    listA = beginRound()
+    winner = compareInputsToProduct(listA[0], listA[1], listA[2], listA[3], listA[4], listA[5])
+    print(listA)
     
     if winner == 0:
         print("Player 1 Wins!")
@@ -73,10 +85,11 @@ def determineWinner():
         print("Player 5 Wins!")
         winningPlayer = 5
 
+    print(winningPlayer)
     return winningPlayer
     
   
-def updateScores():
+""" def updateScores():
     roundWinner = determineWinner()
     if roundWinner == 1:
         currentScores[0] = currentScores[0] - 1
@@ -93,13 +106,13 @@ def updateScores():
     elif roundWinner == 5:
         currentScores[4] = currentScores[4] - 1
         print(currentScores)
+    return currentScores """
     
 
 
-
+beginRound()
 determineWinner()
-updateScores()
-showUpdatedScores()
+# updateScores()
 
 
 
